@@ -35,7 +35,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Company {
+public class CompanyEntity {
     
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -68,7 +68,8 @@ public class Company {
     @Size(min=4,max=50,message = "cidade da empresa deve ter entre 4 e 50 caracteres")
     private String city;
     @NotBlank(message = "estado da empresa é obrigatório")
-    @Size(min=2,max=2,message = "cidade da empresa deve ter entre 2 caracteres")
+    @Size(min = 2, max = 2, message = "estado da empresa deve ter exatamente 2 caracteres")
+    @Column(length = 2) // Garante que a coluna seja mapeada como varchar(2)
     private String state;
 
 
@@ -85,9 +86,9 @@ public class Company {
     */
     @ManyToOne(optional = false) // A empresa não pode existir sem um usuário
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private UserEntity user;
 
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Job> jobs = new ArrayList<>();
+    private List<JobEntity> jobs = new ArrayList<>();
 
 }

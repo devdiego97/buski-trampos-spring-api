@@ -1,0 +1,5 @@
+CREATE TABLE levels (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(10) NOT NULL UNIQUE,
+    description VARCHAR(255)
+);

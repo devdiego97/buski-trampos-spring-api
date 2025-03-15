@@ -18,17 +18,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="contract-types")
+@Table(name="contract_types")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ContractType {
+public class ContractTypeEntity {
      @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long Id;
 
     @NotBlank(message = "nome do tipo de contrato não pode ser vazio")
-    @Size(min=5,max = 10,message ="nome do level  deve ser entre 5 e 10 caracteres")
+    @Size(min=5,max = 10,message ="nome do tipo de contrato  deve ser entre 5 e 10 caracteres")
     @Enumerated(EnumType.STRING)
     private Contract name;
     

@@ -35,7 +35,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class User {
+public class UserEntity {
    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
 
@@ -77,5 +77,5 @@ public class User {
    */
      @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id", nullable = true) // nullable = true indica que o relacionamento é opcional
-    private Company company;
+    private CompanyEntity company;
 }

@@ -18,12 +18,12 @@ import lombok.Setter;
 
 
 @Entity
-@Table(name="models-operating")
+@Table(name="models_operating")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ModelOperating {
+public class ModelOperatingEntity {
     
 
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)

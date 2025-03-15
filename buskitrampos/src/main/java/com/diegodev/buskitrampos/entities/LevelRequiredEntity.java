@@ -22,7 +22,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class levelRequired {
+public class LevelRequiredEntity {
      @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long Id;
 

@@ -94,16 +94,19 @@ public class JobEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "company_id", nullable = false)
-    private Company company;
+    private CompanyEntity company;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "model_operating_id", nullable = false)
-    private ModelOperating modelOperating;
+    private ModelOperatingEntity modelOperating;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "level_required_id", nullable = false)
-    private Level level;
+    private LevelRequiredEntity level;
  
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "contract_type_id", nullable = false) // Relacionamento com ContractTypeEntity
+    private ContractTypeEntity contractType;
     /*
   
 
