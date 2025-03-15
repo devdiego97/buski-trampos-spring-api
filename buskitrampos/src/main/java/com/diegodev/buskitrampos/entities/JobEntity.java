@@ -18,6 +18,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -76,19 +78,33 @@ public class JobEntity {
   @Column(columnDefinition = "boolean default false") // Valor padrão no banco de dados
   private boolean  exclusivePCD ;
     
-    @Temporal(TemporalType.DATE) 
-    private Date  expireDate;
+  @Temporal(TemporalType.DATE) 
+  private Date  expireDate;
 
     
-   @CreatedDate
-    @Column(name = "created_at", updatable = false) 
-    private LocalDateTime createdAt;
+  @CreatedDate
+  @Column(name = "created_at", updatable = false) 
+  private LocalDateTime createdAt;
 
-    @LastModifiedDate
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+  @LastModifiedDate
+  @Column(name = "updated_at")
+  private LocalDateTime updatedAt;
 
- /*
+
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "company_id", nullable = false)
+    private Company company;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "model_operating_id", nullable = false)
+    private ModelOperating modelOperating;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "level_required_id", nullable = false)
+    private Level level;
+ 
+    /*
   
 
   companyid:number,

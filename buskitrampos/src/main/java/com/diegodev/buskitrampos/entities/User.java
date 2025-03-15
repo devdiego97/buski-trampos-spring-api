@@ -1,13 +1,23 @@
 package com.diegodev.buskitrampos.entities;
 
+import java.time.LocalDateTime;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import com.diegodev.buskitrampos.enums.TypeUser;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -51,6 +61,21 @@ public class User {
 
   @Enumerated(EnumType.STRING)
   private TypeUser userType;
+ 
+  @CreatedDate
+  @Column(name = "created_at", updatable = false) 
+  private LocalDateTime createdAt;
 
+  @LastModifiedDate
+  @Column(name = "updated_at")
+  private LocalDateTime updatedAt;
 
+  /*
+   * Relacionamento Opcional: O User pode existir sem uma Company associada (nullable = true).
+    Cascata: Se um User for salvo, atualizado ou removido, a Company associada também será afetada.
+    Lazy Loading: A Company só será carregada do banco de dados quando for acessada, o que melhora o desempenho em cenários onde a Company não é sempre necessária.
+   */
+     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "company_id", nullable = true) // nullable = true indica que o relacionamento é opcional
+    private Company company;
 }
