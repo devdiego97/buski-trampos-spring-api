@@ -1,15 +1,24 @@
 package com.diegodev.buskitrampos.dtos.companys;
 
+
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.diegodev.buskitrampos.entities.JobEntity;
-import com.diegodev.buskitrampos.entities.UserEntity;
-
-public record CompanyResponseDto(
-    Long id,String name,String about,String cover,String cnpj,String state,String  city,
-  String phone,String linkedinUrl,String instagramUrl,String website,
-  LocalDateTime createdAt,LocalDateTime updatedAt,UserEntity user,List<JobEntity> jobs
-) {
-    
-}
+public record CompanyResponseDTO(
+    Long id,
+    String name,
+    String about,
+    String cnpj,
+    String cover,
+    String email,
+    String phone,
+    String linkedinUrl,
+    String instagramUrl,
+    String website,
+    String city,
+    String state,
+    LocalDateTime createdAt,
+    LocalDateTime updatedAt,
+    Long userId, // ID do usuário associado à empresa
+    List<Long> jobIds // IDs dos jobs associados à empresa
+) {} 
